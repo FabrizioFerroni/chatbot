@@ -1,0 +1,81 @@
+.container__chat {
+  display: flex;
+  flex-direction: column;
+  justify-self: auto;
+  align-items: center;
+  // gap: 10px;
+  // padding: 2rem;
+  position: relative;
+
+  &--chats {
+    width: 100%;
+    .chat {
+      display: flex;
+      flex-direction: column;
+      justify-self: center;
+      gap: 10px;
+      padding: 2rem;
+      width: 50%;
+      &__user {
+        align-self: flex-end;
+        background-color: rgba(50, 50, 50, 0.85);
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        border-radius: 1.5rem;
+        padding-bottom: 0.625rem;
+        padding-top: 0.625rem;
+      }
+
+      &__ia {
+        align-self: flex-start;
+        /*  background-color: rgba(50, 50, 50, 0.85); */
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        border-radius: 1.5rem;
+        padding-bottom: 0.625rem;
+        padding-top: 0.625rem;
+
+        &-wp {
+          display: flex;
+          gap: 1.5rem;
+          flex-direction: row;
+
+          img {
+            padding: 0.25rem;
+            border-radius: 9999px;
+            width: 2rem;
+            height: 2rem;
+            outline: solid 1px #424242;
+          }
+
+          /*  p {
+            margin: 0;
+            padding: 0;
+          }
+
+          markdown {
+            margin: 0;
+            padding: 0;
+          } */
+        }
+      }
+    }
+  }
+
+  &--input {
+    background-color: #676767;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-radius: 1.5rem;
+    width: 50%;
+    border-width: 0px;
+  }
+}
+
+// .relative, .max-w-[70%], .rounded-3xl, .bg-token-message-surface, .px-5, .py-2.5

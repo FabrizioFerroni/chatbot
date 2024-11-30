@@ -1,0 +1,25 @@
+@use '../public/scss/main';
+@import 'primeflex/primeflex.css';
+@import 'primeicons/primeicons.css';
+@import 'primeng/resources/primeng.css';
+
+@tailwind components;
+@tailwind utilities;
+
+@layer reset, primeng;
+
+@layer reset {
+  button,
+  input,
+  a {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+body {
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

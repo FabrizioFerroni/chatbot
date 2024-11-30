@@ -1,0 +1,64 @@
+<div class="card flex justify-content-center">
+  <p-sidebar
+    [(visible)]="sidebarVisible"
+    #sidebarRef
+    [blockScroll]="true"
+    [dismissible]="closeOnEscape"
+    [autoZIndex]="true"
+    [baseZIndex]="100"
+    [closeOnEscape]="closeOnEscape"
+    [modal]="closeOnEscape"
+    [style]="{ width: '200px', top: '70px' }">
+    <ng-template pTemplate="headless">
+      <div class="flex flex-column h-full">
+        <div class="overflow-y-auto">
+          <ul class="list-none py-3 px-2 m-0">
+            <li>
+              <ul class="list-none p-0 m-0 overflow-hidden">
+                <li>
+                  <a
+                    pRipple
+                    routerLink="/{{ homeRoute }}"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    class="w-full block py-2 px-3 cursor-pointer border-round hover:surface-100 active:surface-200 transition-duration-150 transition-colors p-ripple">
+                    <i class="pi pi-home pr-2"></i>
+                    <span class="font-medium text-gray-200">Nuevo Chat</span>
+                  </a>
+                </li>
+                <hr class="my-3 border-top-1 border-spacing-0 surface-border" />
+                @for (item of chats; track $index) {
+                  <li class="my-1">
+                    <a
+                      pRipple
+                      [routerLink]="[chatRoute, item.chatId]"
+                      routerLinkActive="active"
+                      pTooltip="{{ item.prompt }}"
+                      tooltipPosition="right"
+                      class="w-full block py-2 px-3 cursor-pointer border-round hover:surface-100 active:surface-200 transition-duration-150 transition-colors p-ripple">
+                      <!-- <i class="pi pi-home pr-2"></i> -->
+                      <span class="font-medium text-gray-200">{{
+                        item.prompt | truncate: 15
+                      }}</span>
+                    </a>
+                  </li>
+                }
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="margin-version hidden">
+          <!--   -->
+          <hr class="mb-3 mx-3 border-top-1 border-spacing-0 surface-border" />
+          <div
+            class="flex flex-col justify-center items-center gap-1 cursor-default">
+            <span class="font-bold text-sm text-primary cursor-default">{{
+              title
+            }}</span>
+            <span class="text-xs text-500 cursor-default">{{ version }}</span>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-sidebar>
+</div>

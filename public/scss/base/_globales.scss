@@ -1,0 +1,72 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* CLIENT-SPECIFIC STYLES */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.outnone {
+  outline: none;
+  box-shadow: 0 0 0 0 transparent;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  outline: none;
+  box-shadow: 0 0 0 0 transparent;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* img {
+  width: 100%;
+  height: auto;
+} */
+
+ul {
+  list-style: none;
+}
+/*
+::selection {
+  display: none;
+}
+ */

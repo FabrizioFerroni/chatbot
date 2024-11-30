@@ -1,0 +1,69 @@
+<div class="card flex justify-content-center">
+  <p-sidebar
+    #sidebarRef
+    [(visible)]="visible"
+    position="right"
+    (onHide)="onHide()"
+    [autoZIndex]="true"
+    [blockScroll]="true"
+    [baseZIndex]="100"
+    [closeOnEscape]="true"
+    [dismissible]="true"
+    [modal]="true"
+    [style]="{ top: '70px' }">
+    <ng-template pTemplate="headless">
+      <div class="flex flex-column h-full">
+        <div
+          class="flex align-items-center justify-content-between pl-3 pr-4 pt-3 flex-shrink-0">
+          <span class="">
+            <span class="font-semibold text-2xl text-primary"
+              >Elegir Modelo</span
+            >
+          </span>
+          <span>
+            <p-button
+              type="button"
+              (onClick)="closeCallback($event)"
+              icon="pi pi-times"
+              rounded="true"
+              outlined="true"
+              styleClass="h-2rem w-2rem"></p-button>
+          </span>
+        </div>
+        <div class="overflow-y-auto">
+          <ul class="list-none p-3 m-0">
+            <li>
+              <ul
+                class="list-none p-0 m-0 overflow-visible grid grid-cols-1 gap-2">
+                @for (item of models; track $index) {
+                  <li>
+                    <a
+                      routerLink="/"
+                      (click)="onSelectModel(item.name); onHide()"
+                      [queryParams]="{ model: item.name }"
+                      pRipple
+                      routerLinkActive="active"
+                      class="w-full block py-2 px-3 cursor-pointer border-round hover:surface-100 active:surface-200 transition-duration-150 transition-colors p-ripple">
+                      <i class="pi pi-microchip-ai pr-2 text-primary"></i>
+                      <span class="font-medium text-gray-200">{{
+                        item.name
+                      }}</span>
+                      <i
+                        class="pi pi-check pl-2 text-green-500"
+                        [class.hidden]="selectedModel !== item.name"
+                        [class.active]="selectedModel !== item.name"></i>
+                    </a>
+                  </li>
+                }
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="mt-auto">
+          <hr class="mb-3 mx-3 border-top-1 border-none surface-border" />
+          <div class="m-3 flex align-items-center p-3 gap-2"></div>
+        </div>
+      </div>
+    </ng-template>
+  </p-sidebar>
+</div>

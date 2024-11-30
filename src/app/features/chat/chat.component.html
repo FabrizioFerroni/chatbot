@@ -1,0 +1,53 @@
+<!-- eslint-disable @angular-eslint/template/elements-content -->
+<app-dashboard-navbar>
+  <div class="container__chat">
+    <div class="container__chat--chats">
+      @for (item of chats; track item.id; let idx = $index, e = $even) {
+        <div [id]="$index" class="chat">
+          <div class="chat__user">
+            <p>{{ item.prompt }}</p>
+          </div>
+          <div class="chat__ia">
+            <div class="chat__ia-wp">
+              <img src="img/chatbot.png" alt="" />
+
+              @if (isSuccess) {
+                <markdown
+                  marmaid
+                  [data]="item.responseIA"
+                  ngPreserveWhitespaces />
+              } @else {
+                <p>
+                  <i class="pi pi-spin pi-spinner-dotted"></i>
+                </p>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="container__chat--input">
+      <button
+        pButton="pButton"
+        class="border-0 bg-transparent text-white text-xl"
+        icon="pi pi-microphone"></button>
+      <form
+        [formGroup]="newChatForm"
+        (ngSubmit)="newChat()"
+        class="flex flex-row w-full bg-[#676767] p-1 border-round-3xl border-0">
+        <input
+          type="text"
+          placeholder="Escribe tu consulta..."
+          formControlName="search"
+          class="w-full bg-transparent border-0 text-white p-1 border-round-3xl" />
+        <!-- disabled -->
+        <button
+          pButton="pButton"
+          [disabled]="!newChatForm.valid"
+          [loading]="loading"
+          class="border-0 bg-white text-black hover:bg-gray-300 disabled:bg-gray-100 border-round-3xl"
+          icon="pi pi-arrow-up"></button>
+      </form>
+    </div>
+  </div>
+</app-dashboard-navbar>
